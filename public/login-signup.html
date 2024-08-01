@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- user registration section -->
+
+    <div class="registration">
+        <div class="reg-img">
+            <img src="./user-signup.jpg" alt="">
+        </div>
+        <div class="rl-form">
+            <div>Registration</div>
+            <div>
+                <form action="" class="reg-form" id="reg-form">
+                    <label for="name">Full Name:</label>
+                    <input type="text" name="name" id="name" placeholder="eg. Himanshu Kumar" required>
+                    <label for="name">Email:</label>
+                    <input type="email" name="email" placeholder="eg. abc@xyz.com" required>
+                    <label for="name">Password: </label>
+                    <input type="password" name="passowrd" id="" placeholder="Password" required>
+                    <label for="name">Confirm Password:</label>
+                    <input type="password" name="cnf-passowrd" id="" placeholder="Password" required>
+                    <button type="submit">SignUp</button>
+                </form>
+            </div>
+            <div class="ex-user">Existing user ? <a href="#" onclick="exUser()">click here</a> to login.</div>
+        </div>
+    </div>
+
+
+
+    <!-- user login section -->
+    <div class="login">
+        <div class="reg-img">
+            <img src="./user-login.jpg" alt="">
+        </div>
+        <div class="rl-form">
+            <div>Login</div>
+            <div>
+                <form action="" class="reg-form" id="login-form">
+                    <label for="name">Email:</label>
+                    <input type="email" name="email" placeholder="eg. abc@xyz.com" required>
+                    <label for="name">Password: </label>
+                    <input type="password" name="passowrd" id="" placeholder="Password" required>
+                    <button type="submit">Sign in</button>
+                </form>
+            </div>
+            <div class="ex-user">New user ? <a href="#" onclick="newUser()">clich here</a> to signup.</div>
+        </div>
+    </div>
+    <!-- javascript file link -->
+    <script src="./script.js"></script>
+</body>
+</html>

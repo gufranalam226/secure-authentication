@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "API for secure signup ans login authentication",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "keywords": [
     "signup",
@@ -14,6 +16,13 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "express": "^4.19.2"
-  }
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.2"
+  },
+  "runArgs": [
+    "--env-file",
+    "./.env"
+  ]
 }

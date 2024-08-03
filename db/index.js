@@ -1,28 +1,22 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 import dotenv from "dotenv"
-
-
-
+import { apiErrorHandler } from "../src/apiErrorHandler.js";
 
 dotenv.config({
     path : "./.env"
 })
 
-
 const MONGODB_URI = process.env.MONGODB_URI
 
-
 const connectDB = async ()=>{
-    try{
+    try {
         await mongoose.connect(`${MONGODB_URI}`)
         .then(()=>{
-            console.log("DataBase connected successfully...")
+            console.log("DataBase connected successfully!")
         })
-        
-    }catch(err){
-        console.log("Error in connectin with DataBase : ", err)
-        throw err
+    } catch (error) {
+        throw new apiErrorHandler(401, "Error while connecting with the database")
     }
 }
 
-export default connectDB
+export {connectDB}

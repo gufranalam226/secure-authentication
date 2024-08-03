@@ -17,19 +17,35 @@
         <div class="rl-form">
             <div>Registration</div>
             <div>
-                <form action="" class="reg-form" id="reg-form">
+                <form method="post" action="/register" class="reg-form" id="reg-form">
+
                     <label for="name">Full Name:</label>
-                    <input type="text" name="name" id="name" placeholder="eg. Himanshu Kumar" required>
-                    <label for="name">Email:</label>
-                    <input type="email" name="email" placeholder="eg. abc@xyz.com" required>
-                    <label for="name">Password: </label>
-                    <input type="password" name="passowrd" id="" placeholder="Password" required>
-                    <label for="name">Confirm Password:</label>
-                    <input type="password" name="cnf-passowrd" id="" placeholder="Password" required>
+                    <input type="text" name="fullname" id="name" placeholder="eg. Himanshu Kumar" >
+
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" placeholder="eg. himanshu123"  >
+
+                    <label for="gender">Male:</label>
+                    <input type="radio" name="gender" value="Male" id="gender" placeholder="eg. himanshu123" >
+                    <label for="gender">Female:</label>
+                    <input type="radio" name="gender" value="Female" id="gender" placeholder="eg. himanshu123" >
+
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="number" name="phoneNumber" id="phoneNumber" placeholder="eg. 1234567890" pattern="0-9" >
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="eg. abc@xyz.com" >
+
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+
+                    <label for="cnfPassword">Confirm Password:</label>
+                    <input type="password" name="cnfpassword" id="cnfpassword" placeholder="Password" required>
+
                     <button type="submit">SignUp</button>
                 </form>
             </div>
-            <div class="ex-user">Existing user ? <a href="#" onclick="exUser()">click here</a> to login.</div>
+            <div class="ex-user">Existing user ? <span href="/" onclick="exUser()" style="cursor:pointer"><b>click here</b></span> to login.</div>
         </div>
     </div>
 
@@ -43,15 +59,17 @@
         <div class="rl-form">
             <div>Login</div>
             <div>
-                <form action="" class="reg-form" id="login-form">
-                    <label for="name">Email:</label>
-                    <input type="email" name="email" placeholder="eg. abc@xyz.com" required>
-                    <label for="name">Password: </label>
-                    <input type="password" name="passowrd" id="" placeholder="Password" required>
+                <form action="/login" method="post" class="reg-form" id="login-form">
+                    <label for="email">Email:</label>
+                    <input type="text" name="loginId" id="email" placeholder="eg. abc@xyz.com" required>
+
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    
                     <button type="submit">Sign in</button>
                 </form>
             </div>
-            <div class="ex-user">New user ? <a href="#" onclick="newUser()">clich here</a> to signup.</div>
+            <div class="ex-user">New user ? <span href="/" onclick="newUser()" style="cursor:pointer"><b>click here</b></span> to signup.</div>
         </div>
     </div>
     <!-- javascript file link -->

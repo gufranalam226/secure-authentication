@@ -3,9 +3,14 @@ import GoogleStrategy from "passport-google-oauth2"
 import { User } from "../schema/user.schema.js";
 import passport from 'passport'
 import mongoose from "mongoose";
+import dotenv from "dotenv"
 
-const GOOGLE_CLIENT_ID = "752164098138-gigdspltd85765rt1omlf1m2l5gjniim.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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"
+dotenv.config({
+    path: "./.env"
+})
+
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
 
 
 const findOrCreate = async (profile, done)=>{

@@ -5,13 +5,6 @@ import passport from 'passport'
 import mongoose from "mongoose";
 import dotenv from "dotenv"
 
-dotenv.config({
-    path: "./.env"
-})
-
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
-
 
 const findOrCreate = async (profile, done)=>{
     const user = await User.findOne({ googleId: profile.id });

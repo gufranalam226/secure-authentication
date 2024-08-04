@@ -39,7 +39,6 @@ const userSchema = mongoose.Schema({
 
 
 userSchema.methods.generateAccessToken = async function (){
-    console.log("indide generate token")
     return await Jwt.sign({
         _id: this._id
     },

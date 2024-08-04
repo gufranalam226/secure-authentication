@@ -4,10 +4,9 @@ import {verifyJwt} from "../middleware/verifyJwt.middkeware.js"
 
 
 const logoutUser = asyncHandler(async (req, res)=>{
-    console.log(req)
     
     await User.findOneAndUpdate (
-        {_id : req.user._id},
+        req.user._id,
         {
             $unset: {
                 refreshToken : 1

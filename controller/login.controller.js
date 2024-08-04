@@ -8,7 +8,6 @@ import cookieParser from "cookie-parser";
 
 const generateToken = async (userId)=>{
     try {
-        console.log(userId)
         
         const findUser = await User.findOne(userId)
         const accessToken = await findUser.generateAccessToken()

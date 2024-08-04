@@ -9,23 +9,19 @@ dotenv.config({
     path: "./.env"
 })
 
-const verifyJwt = asyncHandler(async(req, res)=>{
-    try {
-        const token = req.cookie?.accessToken
-        if(!token){
-            throw new apiErrorHandler(201, "Unauthorized access")
-        }
-        const decodeToken = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-        console.log(decodeToken)
-        const user = await User.findById(decodeToken?._id)
-        if(!user){
-            throw new apiErrorHandler(201, "Unauthorized access")
-        }
-        req.user = user
-        next()
-    } catch (error) {
-        throw new apiErrorHandler(400, "something went wrong while veriging token")
+const verifyJwt = asyncHandler(async(req, res, next)=>{
+    const token = req.cookies?.accessToken
+    if(!token){
+        throw new apiErrorHandler(201, "Unauthorized access")
     }
+    const decodeToken = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    const user = await User.findById(decodeToken?._id)
+    if(!user){
+        throw new apiErrorHandler(201, "Unauthorized access")
+    }
+    req.user = user
+    next()
+    
 })
 
 export  {verifyJwt}

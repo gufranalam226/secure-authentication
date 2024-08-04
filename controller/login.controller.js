@@ -20,6 +20,7 @@ const generateToken = async (userId)=>{
 }
 
 const loginUser = asyncHandler(async(req, res)=>{
+
     const {loginId, password} = req.body
     if(!loginId){
         throw new apiErrorHandler(201, "Username, email or phone number is required")

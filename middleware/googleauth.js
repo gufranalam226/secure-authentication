@@ -21,7 +21,7 @@ const findOrCreate = async (profile, done)=>{
         gender:profile?.gender || "Unspecified",
         phoneNumber :"0000",
         email : profile.email, 
-        password: "google"
+        password: "undefined"
 
     })
     

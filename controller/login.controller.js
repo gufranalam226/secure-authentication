@@ -27,7 +27,7 @@ const loginUser = asyncHandler(async(req, res)=>{
     }
 
     const userFind = await User.findOne({
-        $or :[{username: loginId}, {email: loginId}, {phoneNumber: loginId}]
+        $or :[{username: loginId}, {email: loginId}]
     })
     if(!userFind){
         throw new apiErrorHandler(201, "Unauthorized access, user not found");
@@ -39,14 +39,11 @@ const loginUser = asyncHandler(async(req, res)=>{
     }
     const userInfo = await  User.findById(userFind._id).select("-password -_id -__v")
 
-
     const {accessToken, refreshToken} = await generateToken(userFind._id)
     const options ={
         http : true,
         secure : true
     }
-
-    
     
     return res.status(200)
     .cookie("accessToken", accessToken, options)

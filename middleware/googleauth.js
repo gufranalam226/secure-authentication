@@ -5,29 +5,34 @@ import passport from 'passport'
 import mongoose from "mongoose";
 import dotenv from "dotenv"
 
+dotenv.config({
+  path : "./.env"
+})
 
 const findOrCreate = async (profile, done)=>{
-    const user = await User.findOne({ googleId: profile.id });
-    console.log("checking user details in DB")
+  // console.log(profile)
+    const user = await User.findOne({ email : profile.email });
     if(user){
         return done(null, user)
     }
-    const newUser = new User({
-        fullname: profile.name,
+    const newUser = await User.create({
+        fullname: profile.displayName,
         username:profile.id,
-        gender:profile.gender,
-        phoneNumber :null,
-        email : profile.emails, 
+        gender:profile?.gender || "Unspecified",
+        phoneNumber :"0000",
+        email : profile.email, 
         password: "google"
 
     })
-    console.log("creating new user")
+    
     newUser.save()
     
     return done(null, newUser)
     
 }
 
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
 passport.use(new GoogleStrategy({
     clientID:     GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
@@ -35,7 +40,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    findOrCreate({ googleId: profile.id }, function (err, user) {
+    findOrCreate(profile, function (err, user) {
       return done(err, user);
     });
   }

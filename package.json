@@ -24,6 +24,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.2",
     "passport": "^0.7.0",
+    "passport-github": "^1.1.0",
     "passport-google-oauth2": "^0.2.0"
   },
   "runArgs": [
